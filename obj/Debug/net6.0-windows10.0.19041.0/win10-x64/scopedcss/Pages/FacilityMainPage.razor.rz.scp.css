@@ -1,0 +1,22 @@
+.btn[b-789iig5hrh] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.info_sub_title_section[b-789iig5hrh],
+.info_display_section[b-789iig5hrh] {
+    border-bottom: 1px solid black;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 20px 100px 100px 150px 100px 80px;
+}
+
+.info_display_section[b-789iig5hrh] {
+    grid-template-columns: 20px 100px 100px 150px 100px 80px 100px 80px;
+}
+
+.info_display[b-789iig5hrh] {
+    vertical-align: sub;
+}

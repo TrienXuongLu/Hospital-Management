@@ -1,0 +1,94 @@
+﻿@page "/FacilityPage"
+@page "/AddFacilityPage/{FacilityId:int}"
+
+@using HospitalManagementSystem.Data
+@inject FacilityInstance facilityInstance
+@inject NavigationManager navManager
+
+<h3>Facility</h3>
+<div class="search_section">
+    <div class="label">
+        <label class="label_search" for="facilityName">Name</label><br />
+        <label class="label_search" for="facilityAddress">Address</label>
+    </div>
+    <div class="input">
+        <input type="text" id="facilityName" @bind="facilityName" placeholder="Type Facility Name" /><br />
+        <input type="text" id="facilityAddress" @bind="facilityAddress" placeholder="Type Facility Address" />
+    </div>
+    <button class="btn" @onclick="AddFacility">Add</button>
+    <button class="btn" @onclick="BackToMain">Remove</button>
+</div>
+
+
+@code {
+    [Parameter]
+    public int FacilityId { get; set; }
+
+    private int facilityId = 0;
+    private string facilityName = "";
+    private string facilityAddress = "";
+
+    protected async override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        facilityId = FacilityId;
+        if (facilityId > 0)
+        {
+            var facility = await facilityInstance.SearchFacility(facilityId);
+            facilityName = facility.facilityName;
+            facilityAddress = facility.facilityAddress;
+            this.StateHasChanged();
+        }
+    }
+
+    public async void Validation()
+    {
+        var facility = new Facility();
+        facility.facilityName = facilityName;
+
+        try
+        {
+            if (facilityName == null || facilityName == "")
+            {
+                throw new ArgumentNullException();
+            }
+            AddFacility();
+        }
+        catch (ArgumentNullException ex)
+        {
+            await Application.Current.MainPage.DisplayAlert("Please Fill In All Values", ex.Message, "Exit");
+        }
+    }
+
+    public async void AddFacility()
+    {
+        var facility = new Facility();
+        facility.facilityId = facilityId;
+        facility.facilityName = facilityName;
+        facility.facilityAddress = facilityAddress;
+
+        var docAdd = await facilityInstance.AddEditFacility(facility);
+        if (docAdd)
+        {
+            if (facilityId == 0)
+            {
+                await App.Current.MainPage.DisplayAlert("Save Facility", "Saved", "Facility Saved");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Update Facility", "Updated", "Facility Update");
+            }
+            navManager.NavigateTo("FacilityMainPage");
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("Saving", "Saving File", "Saved");
+        }
+    }
+
+    public void BackToMain()
+    {
+        navManager.NavigateTo("FacilityMainPage");
+    }
+}

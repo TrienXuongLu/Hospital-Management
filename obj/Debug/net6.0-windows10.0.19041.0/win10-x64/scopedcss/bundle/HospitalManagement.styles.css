@@ -1,0 +1,425 @@
+/* /Pages/DoctorMainPage.razor.rz.scp.css */
+.btn[b-f1s2pl8dup] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.info_sub_title_section[b-f1s2pl8dup],
+.info_display_section[b-f1s2pl8dup] {
+    border-bottom: 1px solid black;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 20px 100px 100px 150px 100px 80px;
+}
+
+.info_display_section[b-f1s2pl8dup] {
+    grid-template-columns: 20px 100px 100px 150px 100px 80px 100px 80px;
+}
+
+.info_display[b-f1s2pl8dup] {
+    vertical-align: sub;
+}
+
+/* /Pages/DoctorPage.razor.rz.scp.css */
+/*Search section*/
+.search_section[b-vx2xv9otq3] {
+    display: flex;
+}
+
+.search_section label[b-vx2xv9otq3] {
+    margin: 4px 5px;
+
+}
+
+.search_section input[b-vx2xv9otq3] {
+    width: 200px;
+    margin: 1px;
+}
+
+/*Display section*/
+.display_section[b-vx2xv9otq3] {
+    margin-top: 20px;
+}
+
+.info_area[b-vx2xv9otq3] {
+    width: 70%;
+    display: flex;
+}
+
+.info_sub_title_section[b-vx2xv9otq3] {
+    margin-right: 10px;
+}
+
+.info_sub_title[b-vx2xv9otq3] {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.info_display[b-vx2xv9otq3] {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 3px 0;
+}
+
+.btn[b-vx2xv9otq3] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 50px 20px 5px 20px;
+    padding: 0;
+    height: 40px;
+}
+/* /Pages/EquipmentMainPage.razor.rz.scp.css */
+.btn[b-33hyqzp5ga] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.info_sub_title_section[b-33hyqzp5ga],
+.info_display_section[b-33hyqzp5ga] {
+    border-bottom: 1px solid black;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 20px 100px 100px 150px 100px 80px;
+}
+
+.info_display_section[b-33hyqzp5ga] {
+    grid-template-columns: 20px 100px 100px 150px 100px 80px 100px 80px;
+}
+
+.info_display[b-33hyqzp5ga] {
+    vertical-align: sub;
+}
+/* /Pages/EquipmentPage.razor.rz.scp.css */
+/*Search section*/
+.search_section[b-j2q9auxmfu] {
+    display: flex;
+}
+
+    .search_section label[b-j2q9auxmfu] {
+        margin: 4px 5px;
+    }
+
+    .search_section input[b-j2q9auxmfu] {
+        width: 200px;
+        margin: 1px;
+    }
+
+/*Display section*/
+.display_section[b-j2q9auxmfu] {
+    margin-top: 20px;
+}
+
+.info_area[b-j2q9auxmfu] {
+    width: 70%;
+    display: flex;
+}
+
+.info_sub_title_section[b-j2q9auxmfu] {
+    margin-right: 10px;
+}
+
+.info_sub_title[b-j2q9auxmfu] {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.info_display[b-j2q9auxmfu] {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 3px 0;
+}
+
+.btn[b-j2q9auxmfu] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 50px 20px 5px 20px;
+    padding: 0;
+    height: 40px;
+}
+/* /Pages/FacilityMainPage.razor.rz.scp.css */
+.btn[b-789iig5hrh] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.info_sub_title_section[b-789iig5hrh],
+.info_display_section[b-789iig5hrh] {
+    border-bottom: 1px solid black;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 20px 100px 100px 150px 100px 80px;
+}
+
+.info_display_section[b-789iig5hrh] {
+    grid-template-columns: 20px 100px 100px 150px 100px 80px 100px 80px;
+}
+
+.info_display[b-789iig5hrh] {
+    vertical-align: sub;
+}
+/* /Pages/FacilityPage.razor.rz.scp.css */
+/*Search section*/
+.search_section[b-oriojmjqqe] {
+    display: flex;
+}
+
+    .search_section label[b-oriojmjqqe] {
+        margin: 4px 5px;
+    }
+
+    .search_section input[b-oriojmjqqe] {
+        width: 200px;
+        margin: 1px;
+    }
+
+/*Display section*/
+.display_section[b-oriojmjqqe] {
+    margin-top: 20px;
+}
+
+.info_area[b-oriojmjqqe] {
+    width: 70%;
+    display: flex;
+}
+
+.info_sub_title_section[b-oriojmjqqe] {
+    margin-right: 10px;
+}
+
+.info_sub_title[b-oriojmjqqe] {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.info_display[b-oriojmjqqe] {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 3px 0;
+}
+
+.btn[b-oriojmjqqe] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 50px 20px 5px 20px;
+    padding: 0;
+    height: 40px;
+}
+/* /Pages/PatientMainPage.razor.rz.scp.css */
+.btn[b-71bxw2ck56] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.info_sub_title_section[b-71bxw2ck56],
+.info_display_section[b-71bxw2ck56] {
+    border-bottom: 1px solid black;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 20px 100px 100px 150px 100px 80px;
+}
+
+.info_display_section[b-71bxw2ck56] {
+    grid-template-columns: 40px 100px 100px 150px 100px 80px 100px 80px;
+}
+
+.info_display[b-71bxw2ck56] {
+    vertical-align: sub;
+}
+/* /Pages/PatientPage.razor.rz.scp.css */
+/*Search section*/
+.search_section[b-erifahdp1y] {
+    display: flex;
+}
+
+    .search_section label[b-erifahdp1y] {
+        margin: 4px 5px;
+    }
+
+    .search_section input[b-erifahdp1y] {
+        width: 200px;
+        margin: 1px;
+    }
+
+/*Display section*/
+.display_section[b-erifahdp1y] {
+    margin-top: 20px;
+}
+
+.info_area[b-erifahdp1y] {
+    width: 70%;
+    display: flex;
+}
+
+.info_sub_title_section[b-erifahdp1y] {
+    margin-right: 10px;
+}
+
+.info_sub_title[b-erifahdp1y] {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.info_display[b-erifahdp1y] {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 3px 0;
+}
+
+.btn[b-erifahdp1y] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 50px 20px 5px 20px;
+    padding: 0;
+    height: 40px;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-awex3eo3d0] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-awex3eo3d0] {
+    flex: 1;
+}
+
+.sidebar[b-awex3eo3d0] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-awex3eo3d0] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-awex3eo3d0]  a, .top-row[b-awex3eo3d0]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-awex3eo3d0]  a:hover, .top-row[b-awex3eo3d0]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-awex3eo3d0]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-awex3eo3d0] {
+        display: none;
+    }
+
+    .top-row.auth[b-awex3eo3d0] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-awex3eo3d0]  a, .top-row[b-awex3eo3d0]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-awex3eo3d0] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-awex3eo3d0] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-awex3eo3d0] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row[b-awex3eo3d0], article[b-awex3eo3d0] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-uqw26juo0e] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-uqw26juo0e] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-uqw26juo0e] {
+    font-size: 1.1rem;
+}
+
+.oi[b-uqw26juo0e] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-uqw26juo0e] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-uqw26juo0e] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-uqw26juo0e] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-uqw26juo0e]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-uqw26juo0e]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-uqw26juo0e]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-uqw26juo0e] {
+        display: none;
+    }
+
+    .collapse[b-uqw26juo0e] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

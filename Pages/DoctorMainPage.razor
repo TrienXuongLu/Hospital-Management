@@ -1,0 +1,85 @@
+﻿@page "/DoctorMainPage"
+
+@using HospitalManagementSystem.Data
+@inject DoctorInstance doctorInstance
+@inject NavigationManager navManager
+
+<h3>Doctor Main Page</h3>
+<button class="btn" @onclick="AddDoctor">Add</button>
+@*<div class="find_section">
+    <span class="find_doctor">Find Doctor</span>
+    <input type="text" @bind="docId"/>
+    @if(doctorObj.Contains(find))
+    <span class="info_display">@</span>
+</div>*@
+<div class="display_section">
+    <div class="info_area">
+        <div class="info_sub_title_section">
+            <span class="info_sub_title grid_1">ID</span>
+            <span class="info_sub_title grid_2">Name</span>
+            <span class="info_sub_title grid_3">Specialist</span>
+            <span class="info_sub_title grid_4">Email</span>
+            <span class="info_sub_title grid_5">Office</span>
+        </div>
+        <div class="info_display_section">
+            @if (doctorObj == null)
+            {
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+            }
+            else
+            {
+                foreach (var i in doctorObj)
+                {
+                    <span class="info_display grid_1">@i.doctorId</span>
+                    <span class="info_display grid_2">@i.doctorName</span>
+                    <span class="info_display grid_3">@i.doctorSpecialist</span>
+                    <span class="info_display grid_4">@i.doctorEmail</span>
+                    <span class="info_display grid_5">@i.doctorOffice</span>
+                    <span class="info_display grid_6">@i.doctorDepartment</span>
+                    <button class="btn Addbtn" @onclick="@(() => UpdateDoctor(i))">Edit</button>
+                    <button class="btn Removebtn" @onclick="@(() => RemoveDoctor(i))">Remove</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private IEnumerable<Doctor> doctorObj;
+    public int docId;
+    public IEnumerable<Doctor> find;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //base.OnInitializedAsync();
+        doctorObj = await doctorInstance.SearchDoctor();
+    }
+
+    public async void FindDoc(int docId)
+    {
+        find = await doctorInstance.FindDoctor(docId);
+    }
+
+    public void AddDoctor()
+    {
+        navManager.NavigateTo("DoctorPage");
+    }
+
+    public void UpdateDoctor(Doctor doctorValue)
+    {
+        navManager.NavigateTo($"AddDocPage/{doctorValue.doctorId}");
+    }
+
+    public async void RemoveDoctor(Doctor doctorValue)
+    {
+        await doctorInstance.DeleteDoctor(doctorValue.doctorId);
+        doctorObj = await doctorInstance.SearchDoctor();
+        this.StateHasChanged();
+    }
+}

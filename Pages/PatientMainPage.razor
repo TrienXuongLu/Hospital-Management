@@ -1,0 +1,69 @@
+﻿@page "/PatientMainPage"
+
+@using HospitalManagementSystem.Data
+@inject PatientInstance patientInstance
+@inject NavigationManager navManager
+
+<h3>PatientMainPage</h3>
+
+<button class="btn" @onclick="AddPatient">Add</button>
+<div class="display_section">
+    <div class="info_area">
+        <div class="info_sub_title_section">
+            <span class="info_sub_title grid_1">ID</span>
+            <span class="info_sub_title grid_2">Name</span>
+            <span class="info_sub_title grid_3">Age</span>
+            <span class="info_sub_title grid_4">Disease</span>
+        </div>
+        <div class="info_display_section">
+            @if (patientObj == null)
+            {
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+            }
+            else
+            {
+                foreach (var i in patientObj)
+                {
+                    <span class="info_display grid_1">@i.patientId</span>
+                    <span class="info_display grid_2">@i.patientName</span>
+                    <span class="info_display grid_3">@i.patientAge</span>
+                    <span class="info_display grid_4">@i.patientDisease</span>
+                    <button class="btn Addbtn" @onclick="@(() => UpdatePatient(i))">Edit</button>
+                    <button class="btn Removebtn" @onclick="@(() => RemovePatient(i))">Remove</button><br />
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private IEnumerable<Patient> patientObj;
+
+    protected override async Task OnInitializedAsync()
+    {
+        patientObj = await patientInstance.SearchPatient();
+    }
+
+    public void AddPatient()
+    {
+        navManager.NavigateTo("PatientPage");
+    }
+
+    public void UpdatePatient(Patient patientValue)
+    {
+        navManager.NavigateTo($"AddPatientPage/{patientValue.patientId}");
+    }
+
+    public async void RemovePatient(Patient patientValue)
+    {
+        await patientInstance.DeletePatient(patientValue.patientId);
+        patientObj = await patientInstance.SearchPatient();
+        this.StateHasChanged();
+    }
+}

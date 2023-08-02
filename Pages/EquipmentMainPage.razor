@@ -1,0 +1,63 @@
+﻿@page "/EquipmentMainPage"
+
+@using HospitalManagementSystem.Data
+@inject EquipmentInstance equipmentInstance
+@inject NavigationManager navManager
+
+<h3>EquipmentMainPage</h3>
+<button class="btn" @onclick="AddEquip">Add</button>
+<div class="display_section">
+    <div class="info_area">
+        <div class="info_sub_title_section">
+            <span class="info_sub_title grid_1">ID</span>
+            <span class="info_sub_title grid_2">Name</span>
+            <span class="info_sub_title grid_3">Quantity</span>
+        </div>
+        <div class="info_display_section">
+            @if (equipObj == null)
+            {
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+                <span class="info_display"></span>
+            }
+            else
+            {
+                foreach (var i in equipObj)
+                {
+                    <span class="info_display grid_1">@i.equipId</span>
+                    <span class="info_display grid_2">@i.toolName</span>
+                    <span class="info_display grid_3">@i.qty</span>
+                    <button class="btn Addbtn" @onclick="@(() => UpdateEquip(i))">Edit</button>
+                    <button class="btn Removebtn" @onclick="@(() => RemoveEquip(i))">Remove</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private IEnumerable<Equipment> equipObj;
+
+    protected override async Task OnInitializedAsync()
+    {
+        equipObj = await equipmentInstance.SearchEquip();
+    }
+
+    public void AddEquip()
+    {
+        navManager.NavigateTo("EquipmentPage");
+    }
+
+    public void UpdateEquip(Equipment equipValue)
+    {
+        navManager.NavigateTo($"AddEquipPage/{equipValue.equipId}");
+    }
+
+    public async void RemoveEquip(Equipment equipValue)
+    {
+        await equipmentInstance.DeleteEquip(equipValue.equipId);
+        equipObj = await equipmentInstance.SearchEquip();
+        this.StateHasChanged();
+    }
+}

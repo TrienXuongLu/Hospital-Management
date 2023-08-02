@@ -1,0 +1,100 @@
+﻿@page "/PatientPage"
+@page "/AddPatientPage/{PatientId:int}"
+
+@using HospitalManagementSystem.Data
+@inject PatientInstance patientInstance
+@inject NavigationManager navManager
+
+<h3>Patient</h3>
+<div class="search_section">
+    <div class="label">
+        <label class="label_search" for="patientName">Name</label><br />
+        <label class="label_search" for="patientAge">Age</label><br />
+        <label class="label_search" for="patientDisease">Disease</label>
+    </div>
+    <div class="input">
+        <input type="text" id="patientName" @bind="patientName" placeholder="Type Patient Name"/><br />
+        <input type="text" id="patientAge" @bind="patientAge" placeholder="Type Patient Age"/><br />
+        <input type="text" id="patientDisease" @bind="patientDisease" placeholder="Type Patient Disease" />
+    </div>
+    <button class="btn" @onclick="AddPatient">Add</button>
+    <button class="btn" @onclick="BackToMain">Remove</button>
+</div>
+
+
+
+@code {
+    [Parameter]
+    public int PatientId { get; set; }
+
+    private int patientId = 0;
+    private string patientName = "";
+    private int patientAge = 0;
+    private string patientDisease = "";
+
+    protected async override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        patientId = PatientId;
+        if (patientId > 0)
+        {
+            var patient = await patientInstance.SearchPatient(patientId);
+            patientName = patient.patientName;
+            patientAge = patient.patientAge;
+            patientDisease = patient.patientDisease;
+            this.StateHasChanged();
+        }
+    }
+
+    public async void Validation()
+    {
+        var patient = new Patient();
+        patient.patientName = patientName;
+
+        try
+        {
+            if (patientName == null || patientName == "")
+            {
+                throw new ArgumentNullException();
+            }
+            AddPatient();
+        }
+        catch (ArgumentNullException ex)
+        {
+            await Application.Current.MainPage.DisplayAlert("Please Fill In All Values", ex.Message, "Exit");
+        }
+    }
+
+    public async void AddPatient()
+    {
+        var patient = new Patient();
+        patient.patientId = patientId;
+        patient.patientName = patientName;
+        patient.patientAge = patientAge;
+        patient.patientDisease = patientDisease;
+
+        var patientAdd = await patientInstance.AddEditPatient(patient);
+        if (patientAdd)
+        {
+            if (patientId == 0)
+            {
+                await App.Current.MainPage.DisplayAlert("Save Patient", "Saved", "Patient Saved");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Update Patient", "Updated", "Patient Update");
+            }
+            navManager.NavigateTo("PatientMainPage");
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("Saving", "Saving File", "Saved");
+        }
+    }
+
+    public void BackToMain()
+    {
+        navManager.NavigateTo("PatientMainPage");
+    }
+}

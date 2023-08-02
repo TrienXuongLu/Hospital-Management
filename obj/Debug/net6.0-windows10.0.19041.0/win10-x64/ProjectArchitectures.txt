@@ -1,0 +1,1 @@
+C:\Users\lutri\Desktop\Assignment\OOP\Project\HospitalManagement\HospitalManagement.csproj;x64

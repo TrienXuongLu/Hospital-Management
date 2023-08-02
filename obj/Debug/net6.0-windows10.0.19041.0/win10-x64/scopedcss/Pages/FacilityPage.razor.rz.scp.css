@@ -1,0 +1,47 @@
+/*Search section*/
+.search_section[b-oriojmjqqe] {
+    display: flex;
+}
+
+    .search_section label[b-oriojmjqqe] {
+        margin: 4px 5px;
+    }
+
+    .search_section input[b-oriojmjqqe] {
+        width: 200px;
+        margin: 1px;
+    }
+
+/*Display section*/
+.display_section[b-oriojmjqqe] {
+    margin-top: 20px;
+}
+
+.info_area[b-oriojmjqqe] {
+    width: 70%;
+    display: flex;
+}
+
+.info_sub_title_section[b-oriojmjqqe] {
+    margin-right: 10px;
+}
+
+.info_sub_title[b-oriojmjqqe] {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.info_display[b-oriojmjqqe] {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 3px 0;
+}
+
+.btn[b-oriojmjqqe] {
+    border: 1px solid black;
+    width: 100px;
+    margin: 50px 20px 5px 20px;
+    padding: 0;
+    height: 40px;
+}

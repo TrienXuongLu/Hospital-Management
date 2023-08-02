@@ -1,0 +1,109 @@
+﻿@page "/DoctorPage"
+@page "/AddDocPage/{DoctorId:int}"
+
+@using HospitalManagementSystem.Data
+@inject DoctorInstance doctorInstance
+@inject NavigationManager navManager
+
+<h3>Doctor</h3>
+<div class="search_section">
+    <div class="label">
+        <label class="label_search" for="doctorName">Name</label><br />
+        <label class="label_search" for="doctorSpecialist">Specialist</label><br />
+        <label class="label_search" for="doctorEmail">Email</label><br />
+        <label class="label_search" for="doctorOffice">Office</label><br />
+        <label class="label_search" for="doctorDepartment">Department</label>
+    </div>
+    <div class="input">
+        <input type="text" id="doctorName" @bind="doctorName" placeholder="Type Doctor Name"/><br />
+        <input type="text" id="doctorSpecialist" @bind="doctorSpecialist" placeholder="Type Doctor Specialist" /><br />
+        <input type="text" id="doctorEmail" @bind="doctorEmail" placeholder="Type Doctor Email" /><br />
+        <input type="text" id="doctorOffice" @bind="doctorOffice" placeholder="Type Doctor Office" /><br />
+        <input type="text" id="doctorDepartment" @bind="doctorDepartment" placeholder="Type Doctor Department" />
+    </div>
+    <button class="btn" @onclick="Validation">Add</button>
+    <button class="btn" @onclick="BackToMain">Remove</button>
+</div>
+
+
+@code {
+    [Parameter]
+    public int DoctorId { get; set; }
+
+    private int doctorId = 0;
+    private string doctorName = "";
+    private string doctorDepartment = "";
+    private string doctorEmail = "";
+    private string doctorOffice = "";
+    private string doctorSpecialist = "";
+
+    protected async override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        doctorId = DoctorId;
+        if (doctorId > 0)
+        {
+            var doctor = await doctorInstance.SearchDoctor(doctorId);
+            doctorName = doctor.doctorName;
+            doctorEmail = doctor.doctorEmail;
+            doctorOffice = doctor.doctorOffice;
+            doctorDepartment = doctor.doctorDepartment;
+            doctorSpecialist = doctor.doctorSpecialist;
+            this.StateHasChanged();
+        }
+    }
+
+    public async void Validation()
+    {
+        var doctor = new Doctor();
+        doctor.doctorEmail = doctorEmail;
+
+        try
+        {
+            if (!doctorEmail.Contains("@"))
+            {
+                throw new ValidEmailException();
+            }
+            AddDoctor();
+        }
+        catch (ValidEmailException ex)
+        {
+            await Application.Current.MainPage.DisplayAlert("Please Fill In All Values", ex.Message, "Exit");
+        }
+    }
+
+    public async void AddDoctor()
+    {
+        var doctor= new Doctor();
+        doctor.doctorId = doctorId;
+        doctor.doctorName = doctorName;
+        doctor.doctorEmail = doctorEmail;
+        doctor.doctorOffice = doctorOffice;
+        doctor.doctorDepartment = doctorDepartment;
+        doctor.doctorSpecialist = doctorSpecialist;
+
+        var docAdd = await doctorInstance.AddEditDoctor(doctor);
+        if(docAdd)
+        {
+            if(doctorId == 0)
+            {
+                await App.Current.MainPage.DisplayAlert("Save Doctor", "Saved", "Doctor Saved");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Update Doctor", "Updated", "Doctor Update");
+            }
+            navManager.NavigateTo("DoctorMainPage");
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("Saving", "Saving File", "Saved");
+        }
+    }
+
+    public void BackToMain()
+    {
+        navManager.NavigateTo("DoctorMainPage");
+    }
+}
